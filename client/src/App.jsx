@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import Card from '@mui/joy/Card';
+
 
 function App() {
 
@@ -12,7 +14,7 @@ function App() {
 
   return (
     <div>
-        <h1>{message}</h1>
+        
     </div>
   )
 }
