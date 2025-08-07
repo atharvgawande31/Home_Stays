@@ -31,7 +31,6 @@ const listingSchema = new mongoose.Schema({
     average: { type: Number, min: 0, max: 5, default: 0 },
     count: { type: Number, default: 0 }
   },
-  photos: [String], 
   amenities: [String], 
   maxGuests: {
     type: Number,

@@ -1,22 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import Card from '@mui/joy/Card';
-
+import Card from "./components/Card";
 
 function App() {
-
-  const [message, setMessage] = useState("")
-
-  useEffect(() => {
-    fetch("http://localhost:3000/api/message")
-    .then((res) => res.json())
-    .then((data) => setMessage(data.message))
-  }, [])
-
   return (
     <div>
-        
+      <Card />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

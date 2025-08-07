@@ -1,26 +1,26 @@
-const mongoose = require("mongoose")
-const Listings = require("../models/listings")
-const Initdata = require("./data")
+const mongoose = require("mongoose");
+const Listings = require("../models/listings");
+const Initdata = require("./data");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/Home_Stays"
-
-.main()
-.then(() => {
-    console.log("Database connected")
-})
-.catch((err => {
-    console.log("Databse connection failed")
-})) 
+const MONGO_URL = "mongodb://127.0.0.1:27017/Home_Stays";
 
 async function main() {
-  await mongoose.connect(MONGO_URL)
-  console.log("Connected to MongoDB")
-}
+  try {
+    await mongoose.connect(MONGO_URL);
+    console.log("✅ Connected to DB");
 
-const initDB = async() => {
-    await Listings.deleteMany({})
+    await Listings.deleteMany({});
     await Listings.insertMany(Initdata.data);
-    console.log("data added successfully")
-}
+    console.log("✅ Data added successfully");
 
-initDB();
+    mongoose.connection.close(); // close connection after seed
+  } catch (err) {
+    console.error("❌ Error seeding DB:", err);
+  }
+}
+module.exports = main()
+ 
+
+
+
+

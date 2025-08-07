@@ -13,10 +13,7 @@ const sampleListing = [
     average: 4.5,
     count: 38
   },
-  photos: [
-    "https://example.com/photos/loft1.jpg",
-    "https://example.com/photos/loft2.jpg"
-  ],
+  
   amenities: [
     "WiFi",
     "Air Conditioning",
