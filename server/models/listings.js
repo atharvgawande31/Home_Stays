@@ -38,11 +38,7 @@ const listingSchema = new mongoose.Schema({
     default: 1,
     min: 1
   },
-  host: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
-  }
+
 });
 
 module.exports = mongoose.model('Listing', listingSchema);
