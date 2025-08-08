@@ -14,8 +14,10 @@ mongoose.connect(MONGO_URL)
 
 const corsOptions = {
   origin: 'http://localhost:5173',
-  optionsSuccessStatus: 200 
+  optionsSuccessStatus: 200
 };
+
+app.use(express.urlencoded({ extended: true }))
 
 app.get("/listings", cors(corsOptions), async (req, res) => {
   try {
@@ -26,6 +28,16 @@ app.get("/listings", cors(corsOptions), async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
+
+app.get("/listings/:_id", cors(corsOptions), async (req, res) => {
+  const userId = req.params._id
+  const oneLisitng = await Listings.findById(userId)
+  res.json(oneLisitng)
+})
+
+
+
+
 
 app.listen(port, () => {
   console.log(`🚀 Server is running on http://localhost:${port}`);
