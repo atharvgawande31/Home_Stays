@@ -1,20 +1,38 @@
-import Card from "./components/Card";
+import React from "react";
 import Show from "./pages/Show";
+import New from "./pages/New";
+import Card from "./components/Card";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import EditListingForm from "./pages/Edit";
+import Auth from "./pages/Auth";
+import "./App.css"
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+
+const Layout = () => (
+  <>
+    <Navbar />
+    <Outlet />
+  </>
+);
 
 function App() {
-  const route = createBrowserRouter([
+  const router = createBrowserRouter([
     {
-      path: "/",
-      element: <Card />,
-    },{
-      path:`/listings/:_id`,
-      element: <Show/>
+      element: <Layout />,
+      children: [
+        {path: "/", element: <Home/>},
+        { path: "/listings", element: <Card /> },
+        { path: "/listings/:_id", element: <Show /> },
+        { path: "/new", element: <New /> },
+        {path: "/listings/:_id/edit" , element: <EditListingForm/>},
+        {path: "/listings/auth/login", element: <Auth/> }
+      ]
     }
   ]);
 
-  return <RouterProvider router={route} />;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
