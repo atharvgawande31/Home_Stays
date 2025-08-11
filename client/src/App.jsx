@@ -27,7 +27,7 @@ function App() {
         { path: "/listings/:_id", element: <Show /> },
         { path: "/new", element: <New /> },
         {path: "/listings/:_id/edit" , element: <EditListingForm/>},
-        {path: "/listings/auth/login", element: <Auth/> }
+
       ]
     }
   ]);
